@@ -25,7 +25,7 @@ typedef struct {
 //adv future work - replica, deletion tag, dublicate filename prevention,
 
 // Storage layer api
-int32_t store_chunk(int32_t chunk_id, const uint8_t *data, size_t size);//stores chunk to disk
+int32_t store_chunk(const uint8_t *data,size_t size);//stores chunk to disk
 int32_t load_chunk(int32_t chunk_id, uint8_t *buffer, size_t buffer_size,size_t *bytes_read);//buffer is a block of memory where the chunk data will be loaded (copied) into. buffer = array of bytes
 
 // Metadata layer api
