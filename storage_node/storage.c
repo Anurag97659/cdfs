@@ -4,9 +4,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
-int32_t store_chunk(int32_t chunk_id, const uint8_t *data, size_t size) {
+int32_t store_chunk(const uint8_t *data, size_t size) {
     char filename[64];
-    snprintf(filename, sizeof(filename), "chunk_%d.dat", chunk_id);
+    snprintf(filename, sizeof(filename), "chunk_%d.dat", rand() % 1000000); // !!!!!!!!!!!will fix it later!!!!!!!!!!!
 
     FILE *fp = fopen(filename, "wb");
     if (!fp)

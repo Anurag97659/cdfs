@@ -22,7 +22,7 @@ typedef struct {
     chunk_info_t chunks[MAX_CHUNKS];
 }file_metadata_t;
 //future work - add file permissions, timestamps, file size. to file_metadata_t
-//adv future work - replica, deletion tag, dublicate filename prevention,
+//adv future work - replica, deletion tag, duplicate filename prevention,
 
 // Storage layer api
 int32_t store_chunk(const uint8_t *data,size_t size);//stores chunk to disk

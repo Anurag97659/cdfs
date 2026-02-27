@@ -1,8 +1,6 @@
 #include "dfs.h"
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
-
 
 int32_t cdfs_put(const char *local_path, const char *cdfs_path) {
     // static int32_t global_chunk_id = 0;
@@ -18,7 +16,15 @@ int32_t cdfs_put(const char *local_path, const char *cdfs_path) {
 
     while (1) {
         size_t bytes = fread(buffer, 1, CHUNK_SIZE, fp);
-        if(bytes == 0)break;
+        if(bytes == 0){
+            if(feof(fp)){
+                break; //end of file reached
+            } 
+            if(ferror(fp)){ 
+                fclose(fp);//error reading file, cleanup and return error
+                return -1;
+            }
+        }
         
         if(chunk_count >= MAX_CHUNKS){
             fclose(fp);
